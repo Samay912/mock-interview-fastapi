@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+databricks
+databricks-sql-connector
+pydantic
+uuid
+requests
