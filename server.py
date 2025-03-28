@@ -97,7 +97,7 @@ async def generate_questions(data: dict):
             "user_id": str(user_id),  # Ensure user_id is a string if it's a UUID
             "role": data["role"],
             "level": data["level"],
-            "techstack": ",".join(data["techstack"]),
+            "techstack": data["techstack"],
             "type": data["type"],
             "amount": str(data["amount"])
         }
@@ -124,8 +124,7 @@ async def fetch_generated_questions(user_request: dict):
                 cursor.execute(
                     """
                     SELECT question_id, user_id, questions, generated_at 
-                    FROM pesu.assessment.generated_questions 
-                    WHERE question_id = ?
+                    FROM pesu.assessment.generated_questions
                     """,
                     (user_request['question_id'],)
                 )
