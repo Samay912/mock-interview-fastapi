@@ -89,17 +89,17 @@ async def generate_questions(data: dict):
     }
 
     # Extract user_id and question details
-    user_id = data.get("user_id")  # Extract user_id from request body
+    user_id = data["user_id"]  # Extract user_id from request body
 
     payload = {
         "job_id": DATABRICKS_JOB_ID,
         "notebook_params": {
-            "user_id": str(user_id),  # Ensure user_id is a string if it's a UUID
+            "user_id": user_id,  # Ensure user_id is a string if it's a UUID
             "role": data["role"],
             "level": data["level"],
             "techstack": data["techstack"],
             "type": data["type"],
-            "amount": str(data["amount"])
+            "amount": data["amount"]
         }
     }
 
